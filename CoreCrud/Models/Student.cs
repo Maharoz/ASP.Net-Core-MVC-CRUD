@@ -13,11 +13,11 @@ namespace CoreCrud.Models
         [Key]
         public int StudentId { get; set; }
         [Column(TypeName = "nvarchar(250)")]
-        [Required]
+        [Required(ErrorMessage = "This field is required")]
         [DisplayName("Full Name")]
         public string FullName { get; set; }
         [Column(TypeName = "nvarchar(10)")]
-        [DisplayName("Student Name")]
+        [DisplayName("Student Code")]
         public string StudentCode { get; set; }
         [Column(TypeName = "nvarchar(100)")]
         public string StudentYear { get; set; }
