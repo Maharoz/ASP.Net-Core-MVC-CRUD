@@ -43,9 +43,9 @@ namespace CoreCrud.Controllers
         }
 
         // GET: Student/Create
-        public IActionResult Create()
+        public IActionResult AddOrEdit(int id=0)
         {
-            return View();
+            return View(new Student());
         }
 
         // POST: Student/Create
