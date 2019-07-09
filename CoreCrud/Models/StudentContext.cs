@@ -12,5 +12,7 @@ namespace CoreCrud.Models
         {
                 
         }
+
+        public DbSet<Student> Students { get; set; }
     }
 }
