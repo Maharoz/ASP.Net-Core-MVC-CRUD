@@ -43,9 +43,8 @@
                 @Html.DisplayFor(modelItem => item.CampusLocation)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
+                <a asp-action="AddOrEdit" asp-route-id="@item.StudentId"><i class="fa fa-marker fa-lg"></i>Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.StudentId" class="text-danger ml-1"><i class="fa fa-trash-alt fa-lg"></i>Delete</a>
             </td>
         </tr>
 }
