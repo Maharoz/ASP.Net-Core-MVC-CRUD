@@ -29,7 +29,12 @@ namespace CoreCrud.Controllers
         // GET: Student/Create
         public IActionResult AddOrEdit(int id=0)
         {
+            if(id==0)
             return View(new Student());
+            else
+            {
+                return View(_context.Students.Find(id));
+            }
         }
 
         // POST: Student/Create
@@ -41,7 +46,10 @@ namespace CoreCrud.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(student);
+                if (student.StudentId == 0)
+                    _context.Add((student));
+                else
+                _context.Update(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -53,19 +61,10 @@ namespace CoreCrud.Controllers
         // GET: Student/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.StudentId == id);
-            if (student == null)
-            {
-                return NotFound();
-            }
-
-            return View(student);
+            var student = await _context.Students.FindAsync((id));
+            _context.Students.Remove((student));
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
       
